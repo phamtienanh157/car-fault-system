@@ -1,3 +1,7 @@
+<?php
+include("./config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,8 +20,7 @@
   <body>
     <h2 class="mb-3">Bạn hãy trả lời các câu hỏi dưới đây</h2>
     <div class="mb-2">
-      Lưu ý: (<span class="required">*</span>) là những câu hỏi bắt buộc phải
-      trả lời
+      Lưu ý: (<span class="required">*</span>) là những câu hỏi bắt buộc
     </div>
     <form method="post" action="./main.php">
       <div class="row">
@@ -29,9 +32,15 @@
           >
           <select class="form-select" name="question1" required>
             <option selected value="">--- Chọn ---</option>
-            <option value="1">Bình thường</option>
-            <option value="2">Khó nổ máy</option>
-            <option value="3">Không nổ máy</option>
+            <?php 
+              $sql = "select * from engine_status";
+              $result = mysqli_query($db, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<option value="'. $row['id'] .'">'.$row['name'].'</option>';
+                }
+              }
+            ?>
           </select>
         </div>
         <!-- Chết máy đột ngột -->
@@ -42,10 +51,15 @@
           >
           <select class="form-select" name="question2" required>
             <option selected value="">--- Chọn ---</option>
-            <option value="1">Không bao giờ</option>
-            <option value="2">Hiếm khi</option>
-            <option value="3">Thỉnh thoảng</option>
-            <option value="4">Thường xuyên</option>
+            <?php 
+              $sql = "select * from sudden_shutdown";
+              $result = mysqli_query($db, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<option value="'. $row['id'] .'">'.$row['name'].'</option>';
+                }
+              }
+            ?>
           </select>
         </div>
         <!-- Đèn cảnh báo động cơ -->
@@ -88,9 +102,15 @@
           >
           <select class="form-select" name="question4" required>
             <option selected value="">--- Chọn ---</option>
-            <option value="1">Còn nhiều</option>
-            <option value="2">Còn ít</option>
-            <option value="3">Hết</option>
+            <?php 
+              $sql = "select * from gasoline";
+              $result = mysqli_query($db, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<option value="'. $row['id'] .'">'.$row['name'].'</option>';
+                }
+              }
+            ?>
           </select>
         </div>
         <!-- Ắc quy -->
@@ -101,9 +121,15 @@
           >
           <select class="form-select" name="question5" required>
             <option selected value="">--- Chọn ---</option>
-            <option value="1">&lt; 2 năm</option>
-            <option value="2">2-4 năm</option>
-            <option value="3">> 4 năm</option>
+            <?php 
+              $sql = "select * from battery";
+              $result = mysqli_query($db, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<option value="'. $row['id'] .'">'.$row['name'].'</option>';
+                }
+              }
+            ?>
           </select>
         </div>
         <!-- Xe rung lắc mạnh -->
@@ -243,9 +269,15 @@
           <label class="form-label">10. Đèn pha có hoạt động không ?</label>
           <select class="form-select" name="question10">
             <option selected value="">--- Chọn ---</option>
-            <option value="1">Sáng</option>
-            <option value="2">Chập chờn</option>
-            <option value="3">Không sáng</option>
+            <?php 
+              $sql = "select * from headlight";
+              $result = mysqli_query($db, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<option value="'. $row['id'] .'">'.$row['name'].'</option>';
+                }
+              }
+            ?>
           </select>
         </div>
         <!-- Hãng xe -->
@@ -253,15 +285,15 @@
           <label class="form-label">11. Xe bạn thuộc hãng xe nào ?</label>
           <select class="form-select" name="question11">
             <option selected value="">--- Chọn ---</option>
-            <option value="1">Toyota</option>
-            <option value="2">Kia</option>
-            <option value="3">Hyundai</option>
-            <option value="4">Honda</option>
-            <option value="5">Ford</option>
-            <option value="6">Mazda</option>
-            <option value="7">Vinfast</option>
-            <option value="8">Mercedes</option>
-            <option value="9">Audi</option>
+            <?php 
+              $sql = "select * from company";
+              $result = mysqli_query($db, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<option value="'. $row['id'] .'">'.$row['name'].'</option>';
+                }
+              }
+            ?>
           </select>
         </div>
         <!-- Lốp xe -->
@@ -271,9 +303,15 @@
           >
           <select class="form-select" name="question12">
             <option selected value="">--- Chọn ---</option>
-            <option value="1">&lt; 2 năm</option>
-            <option value="2">2-4 năm</option>
-            <option value="3">> 4 năm</option>
+            <?php 
+              $sql = "select * from tire";
+              $result = mysqli_query($db, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<option value="'. $row['id'] .'">'.$row['name'].'</option>';
+                }
+              }
+            ?>
           </select>
         </div>
         <!-- Phanh -->
@@ -287,7 +325,7 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary" name="submit">
-        Submit
+        Kiểm tra
       </button>
     </form>
   </body>
