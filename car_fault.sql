@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2022 at 04:10 PM
+-- Generation Time: Jan 13, 2022 at 03:59 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -63,23 +63,25 @@ CREATE TABLE `cases` (
   `tire` int(11) DEFAULT NULL,
   `brake` int(11) DEFAULT NULL,
   `output` varchar(255) NOT NULL,
-  `solution` varchar(255) NOT NULL
+  `solution` varchar(535) NOT NULL,
+  `reason` varchar(535) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cases`
 --
 
-INSERT INTO `cases` (`id`, `engine_status`, `sudden_shutdown`, `warning_light`, `gasoline`, `battery`, `shakes`, `noise`, `smell`, `oil`, `headlight`, `company`, `tire`, `brake`, `output`, `solution`) VALUES
-(1, 1, 4, 1, 1, 1, 1, 1, 2, 2, 1, 7, 2, 1, 'Lỗi động cơ', 'Đến gara kiểm tra'),
-(2, 3, 1, 2, 3, 1, 2, 2, 2, 2, 1, 3, 2, 1, 'Hết xăng', 'Kiểm tra đồng hồ xăng'),
-(3, 2, 3, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 'Lỗi ổ khóa điện củ đề và máy phát', 'Đến gara kiểm tra ổ khóa điện củ đề và máy phát'),
-(4, 3, 1, 2, 1, 1, 2, 2, 2, 2, 1, 3, 1, 1, 'Động cơ bị sặc xăng', 'Đến gara sửa chữa'),
-(5, 1, 1, 2, 1, 2, 2, 2, 1, 2, 3, 1, 2, 1, 'Hỏng công tắc đèn pha hoặc cháy đèn', 'Thay công tắc hoặc thay bóng đèn'),
-(6, 2, 4, 2, 1, 3, 2, 2, 2, 2, 3, 1, 2, 1, 'Ắc quy chết hoặc ngăn ắc quy bẩn', 'Kiểm tra, vệ sinh hoặc thay ắc quy'),
-(7, 2, 4, 1, 2, 1, 2, 2, 2, 2, 3, 9, 1, 1, 'Lỗi máy phát điện ô tô', 'Đưa xe đến các trung tâm để bảo dưỡng hoặc thay máy phát mới.'),
-(8, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 3, 1, 3, 'Lốp xe bị mòn/ Hết hạn sử dụng', 'Thay lốp xe'),
-(9, 1, 1, 2, 2, 3, 1, 1, 2, 2, 1, 2, 2, 1, 'Hệ thống giảm sóc, khung gầm xuống cấp', 'Đến gara kiểm tra');
+INSERT INTO `cases` (`id`, `engine_status`, `sudden_shutdown`, `warning_light`, `gasoline`, `battery`, `shakes`, `noise`, `smell`, `oil`, `headlight`, `company`, `tire`, `brake`, `output`, `solution`, `reason`) VALUES
+(1, 1, 4, 1, 1, 1, 1, 1, 2, 2, 1, 7, 2, 1, 'Lỗi động cơ', '- Đến gara kiểm tra', '- Có thể do hỏng bugi hoặc hỏng dây cao áp, bộ chia điện'),
+(2, 3, 1, 2, 3, 1, 2, 2, 2, 2, 1, 3, 2, 1, 'Hết xăng', '- Kiểm tra đồng hồ xăng. Nếu xe của bạn hết nhiên liệu, đổ ít nhất 10 Lít (2.6 US gal, 2.2 Imp gal) nhiên liệu, và thử khởi động lại động cơ. Bởi vì không khí có thể có ở đường ống nhiên liệu khi xe hết nhiên liệu, động cơ có thể cần thời gian lâu hơn để khởi động. Nếu động cơ không khởi động ở lần đầu tiên, thử cố gắng khởi động lại vài lần. Nếu động cơ vẫn không thể khởi động, hãy liên hệ với chuyên gia sửa chữa.', '- Xe hết nhiên liệu'),
+(3, 2, 3, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 'Lỗi ổ khóa điện củ đề và máy phát', '- Đến gara kiểm tra ổ khóa điện củ đề và máy phát', '- Có thể do rôto hoặc stato bị chạm chập'),
+(4, 3, 1, 2, 1, 1, 2, 2, 2, 2, 1, 3, 1, 1, 'Động cơ bị sặc xăng', '- Tháo nến điện ra làm sạch và lau khô điện cực. <br/>\r\n- Đề nổ động cơ và giữ thời gian trong vòng 15 giây.<br/>\r\n- Lắp lại nến điện.<br/>\r\n- Khởi động lại đông cơ nhưng không đạp chân ga.<br/>\r\n- Vệ sinh bầu lọc gió và chỉnh lại tỉ lệ hoà khí.', '- Tỉ lệ hoà khí (xăng, gió không đúng) bầu lọc gió bị tắc do bụi bẩn.'),
+(5, 1, 1, 2, 1, 2, 2, 2, 1, 2, 3, 1, 2, 1, 'Lỗi đèn pha', '- Thay công tắc hoặc thay bóng đèn', '- Hỏng công tắc đèn pha hoặc cháy đèn'),
+(6, 2, 4, 2, 1, 3, 2, 2, 2, 2, 3, 1, 2, 1, 'Lỗi ắc quy', '- Kiểm tra, vệ sinh hoặc thay ắc quy', '- Ắc quy chết hoặc ngăn ắc quy bẩn hoặc các đầu dây nối bị hở'),
+(7, 2, 4, 1, 2, 1, 2, 2, 2, 2, 3, 9, 1, 1, 'Lỗi máy phát điện ô tô', 'Đưa xe đến các trung tâm để bảo dưỡng hoặc thay máy phát mới.', '- Cuộn rotor bị hỏng <br/>\r\n- Cuộn stato bị hỏng <br/>\r\n- IC máy phát điện bị hỏng'),
+(8, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 3, 1, 3, 'Lốp xe bị mòn/ Hết hạn sử dụng', '- Thay lốp xe', '- Do lốp xe bị mòn do quá trình sử dụng <br/>\r\n- Do lốp xe hết hạn sử dụng'),
+(9, 1, 1, 2, 2, 3, 1, 1, 2, 2, 1, 2, 2, 1, 'Hệ thống giảm sóc, khung gầm xuống cấp', '- Đến gara kiểm tra', '- Do hệ thống treo của bánh xe có vấn đề <br/>\r\n- Do xe hoạt động liên tục trong thời gian dài'),
+(10, 1, 2, 2, 1, 2, 1, 1, 1, 1, 1, 5, 1, 1, 'Lỗi hộp số', '- Đến gara kiểm tra', '- Rất có thể là cáp chuyển đổi hoặc hệ thống điều khiển hộp số không còn hoạt động nữa hoặc hoạt động sai <br/>\r\n- Do gioăng bị lão hóa do đã sử dụng quá lâu, hoặc cũng có thể là phớt bị vênh do va chạm mạnh hoặc lỗi kỹ thuật trong quá trình lắp đặt');
 
 -- --------------------------------------------------------
 
@@ -311,7 +313,7 @@ ALTER TABLE `battery`
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `company`
