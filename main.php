@@ -79,7 +79,10 @@ if (isset($_POST['submit'])) {
           <div class="m-2">
             <h2 class="text-center mb-4">Kết quả chuẩn đoán lỗi xe ô tô</h2>
             <h5>Hệ thống chuẩn đoán: ' .$row[14]. '</h5>
-            <h5>Biện pháp: ' .$row[15]. '</h5>
+            <h5>Nguyên nhân:</h5>
+            <h5>' .$row[16]. '</h5>
+            <h5>Biện pháp:</h5>
+            <h5>' .$row[15]. '</h5>
           </div>
         ';
     }
