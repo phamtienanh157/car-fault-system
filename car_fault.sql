@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2022 at 03:59 PM
+-- Generation Time: Jan 14, 2022 at 03:20 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -81,7 +81,9 @@ INSERT INTO `cases` (`id`, `engine_status`, `sudden_shutdown`, `warning_light`, 
 (7, 2, 4, 1, 2, 1, 2, 2, 2, 2, 3, 9, 1, 1, 'Lỗi máy phát điện ô tô', 'Đưa xe đến các trung tâm để bảo dưỡng hoặc thay máy phát mới.', '- Cuộn rotor bị hỏng <br/>\r\n- Cuộn stato bị hỏng <br/>\r\n- IC máy phát điện bị hỏng'),
 (8, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 3, 1, 3, 'Lốp xe bị mòn/ Hết hạn sử dụng', '- Thay lốp xe', '- Do lốp xe bị mòn do quá trình sử dụng <br/>\r\n- Do lốp xe hết hạn sử dụng'),
 (9, 1, 1, 2, 2, 3, 1, 1, 2, 2, 1, 2, 2, 1, 'Hệ thống giảm sóc, khung gầm xuống cấp', '- Đến gara kiểm tra', '- Do hệ thống treo của bánh xe có vấn đề <br/>\r\n- Do xe hoạt động liên tục trong thời gian dài'),
-(10, 1, 2, 2, 1, 2, 1, 1, 1, 1, 1, 5, 1, 1, 'Lỗi hộp số', '- Đến gara kiểm tra', '- Rất có thể là cáp chuyển đổi hoặc hệ thống điều khiển hộp số không còn hoạt động nữa hoặc hoạt động sai <br/>\r\n- Do gioăng bị lão hóa do đã sử dụng quá lâu, hoặc cũng có thể là phớt bị vênh do va chạm mạnh hoặc lỗi kỹ thuật trong quá trình lắp đặt');
+(10, 1, 2, 2, 1, 2, 1, 1, 1, 1, 1, 5, 1, 1, 'Lỗi hộp số', '- Đến gara kiểm tra', '- Rất có thể là cáp chuyển đổi hoặc hệ thống điều khiển hộp số không còn hoạt động nữa hoặc hoạt động sai <br/>\r\n- Do gioăng bị lão hóa do đã sử dụng quá lâu, hoặc cũng có thể là phớt bị vênh do va chạm mạnh hoặc lỗi kỹ thuật trong quá trình lắp đặt'),
+(11, 3, 3, 1, 1, 2, 1, 2, 1, 2, 1, 9, 1, 1, 'Lỗi hệ thống đánh lửa', '- Kiểm tra hệ thống đánh lửa (biến áp đánh lửa, dây cao áp, bộ chia điện, nến đánh lửa…) nếu cần thì phải thay thế. <br/>\r\n- Kiểm tra cuộn điện (cuộn kích từ) khắc phục tốt nhất là thay mới.', '- Rất có thể là cáp chuyển đổi hoặc hệ thống điều khiển hộp số không còn hoạt động nữa hoặc hoạt động sai <br/>\r\n- Do gioăng bị lão hóa do đã sử dụng quá lâu, hoặc cũng có thể là phớt bị vệnh do va chạm mạnh hoặc lỗi kỹ thuật trong quá trình lắp đặt'),
+(12, 1, 2, 2, 2, 1, 2, 1, 2, 2, 1, 6, 2, 2, 'Lỗi phanh', '- Cần chỉnh lại hành trình bàn đạp phanh <br/>\r\n- Siết chặt lại các đầu khớp nối; thay thế các đệm; xả khí lẫn trong dầu phanh; thay thế bầu trợ lực và phớt giữa tổng trên <br/>\r\n- Thay cup-pen, dây phanh và má phanh mới.', '- Bầu trợ lực phanh bị trục trặc <br/>\r\n- Đường ống dẫn dầu bị tắc');
 
 -- --------------------------------------------------------
 
@@ -313,7 +315,7 @@ ALTER TABLE `battery`
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `company`
