@@ -44,8 +44,9 @@ if (isset($_POST['submit'])) {
   $query = "SELECT * from cases";
   $result = mysqli_query($db, $query);
 
+  // convert to array
   $rows = array();
-  while($row = mysqli_fetch_array($result, MYSQLI_NUM))
+  while($row = mysqli_fetch_array($result))
       $rows[] = $row;
 
   // handle S
@@ -62,7 +63,7 @@ if (isset($_POST['submit'])) {
           $temp += $weights[$j-1] * calSimilarityCarBranch($answers[$j-1], $value);
         }
         else{
-          $temp += $weights[$j-1] * calSimilarityWith3Selection($answers[$j-1], $value); 
+          $temp += $weights[$j-1] * calSimilarityWithMore3Selection($answers[$j-1], $value); 
         } 
       }
     }
@@ -78,11 +79,11 @@ if (isset($_POST['submit'])) {
         echo '
           <div class="m-2">
             <h2 class="text-center mb-4">Kết quả chuẩn đoán lỗi xe ô tô</h2>
-            <h5>Hệ thống chuẩn đoán: ' .$row[14]. '</h5>
+            <h5>Hệ thống chuẩn đoán: ' .$row['output']. '</h5>
             <h5>Nguyên nhân:</h5>
-            <h5>' .$row[16]. '</h5>
+            <h5>' .$row['reason']. '</h5>
             <h5>Biện pháp:</h5>
-            <h5>' .$row[15]. '</h5>
+            <h5>' .$row['solution']. '</h5>
           </div>
         ';
     }

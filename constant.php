@@ -4,7 +4,7 @@ function calSimilarityWith2Selection($currentValue, $caseValue){
     return 0;
 }
 
-function calSimilarityWith3Selection($currentValue, $caseValue){
+function calSimilarityWithMore3Selection($currentValue, $caseValue){
     if((int)$currentValue == (int)$caseValue) return 1;
     if(abs((int)$currentValue - (int)$caseValue) == 1) return 0.5;
     return 0;
